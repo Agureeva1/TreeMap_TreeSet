@@ -13,7 +13,12 @@ public class Main {
         people.add(new Person("Федор", "Березьев", 20));
 
         System.out.println(people);
-        Collections.sort(people, new PersonStatusComporator());
+        Collections.sort(people, (o1, o2) -> {
+            if (Integer.compare(Person.getWordCount(o1.getSurname()), Person.getWordCount(o2.getSurname())) != 0) {
+                return Integer.compare(Person.getWordCount(o1.getSurname()), Person.getWordCount(o2.getSurname()));
+            }
+            return Integer.compare(o1.getAge(), o2.getAge());
+        });
         System.out.println(people);
     }
 }
