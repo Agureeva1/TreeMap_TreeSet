@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 
 public class Main {
@@ -14,6 +15,10 @@ public class Main {
 
         System.out.println(people);
         Collections.sort(people, new PersonStatusComporator());
+        System.out.println(people);
+
+        Predicate<Person> adult = Person -> Person.getAge() <= 18;
+        people.removeIf(adult);
         System.out.println(people);
     }
 }
